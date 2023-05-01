@@ -11,10 +11,11 @@ terraform {
   }
 }
 
-resource "aws_eip" "lb" {
-  vpc      = true
+resource "aws_instance" "dev" {
+  ami                    = ami-02396cdd13e9a1257
+  instance_type          = t2.micro
 }
 
 output "my_eip" {
-  value = aws_eip.lb.public_ip
+  value = aws_instance.dev.public_ip
 }
